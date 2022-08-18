@@ -1,0 +1,15 @@
+db:
+  company:
+    echo: True
+    host: localhost
+    port: 5432
+    db_prefix: company
+    user: default
+    password: password
+
+  dev:
+    host: localhost
+    port: 5432
+    db_name: test
+    user: default
+    password: password
