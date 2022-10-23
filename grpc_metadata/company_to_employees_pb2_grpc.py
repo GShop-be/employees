@@ -19,6 +19,11 @@ class EmployeesServiceStub(object):
                 request_serializer=company__to__employees__pb2.UserRequest.SerializeToString,
                 response_deserializer=company__to__employees__pb2.UserResponse.FromString,
                 )
+        self.CreateSuperUser = channel.unary_unary(
+                '/EmployeesService/CreateSuperUser',
+                request_serializer=company__to__employees__pb2.SuperUserRequest.SerializeToString,
+                response_deserializer=company__to__employees__pb2.UserResponse.FromString,
+                )
 
 
 class EmployeesServiceServicer(object):
@@ -30,12 +35,23 @@ class EmployeesServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CreateSuperUser(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_EmployeesServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateUser': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateUser,
                     request_deserializer=company__to__employees__pb2.UserRequest.FromString,
+                    response_serializer=company__to__employees__pb2.UserResponse.SerializeToString,
+            ),
+            'CreateSuperUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateSuperUser,
+                    request_deserializer=company__to__employees__pb2.SuperUserRequest.FromString,
                     response_serializer=company__to__employees__pb2.UserResponse.SerializeToString,
             ),
     }
@@ -61,6 +77,23 @@ class EmployeesService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/EmployeesService/CreateUser',
             company__to__employees__pb2.UserRequest.SerializeToString,
+            company__to__employees__pb2.UserResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateSuperUser(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/EmployeesService/CreateSuperUser',
+            company__to__employees__pb2.SuperUserRequest.SerializeToString,
             company__to__employees__pb2.UserResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

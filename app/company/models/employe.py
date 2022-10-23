@@ -13,6 +13,6 @@ class Employe(Base):
 
     id = Column(String, primary_key=True)
     name = Column(String, nullable=False)
-    email = Column(String)
+    email = Column(String, unique=True)
     role = Column(String)
     password = Column(String)

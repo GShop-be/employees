@@ -14,12 +14,20 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1a\x63ompany_to_employees.proto\"c\n\x0bUserRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0c\n\x04role\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\x12\x17\n\x0frepeat_password\x18\x05 \x01(\t\"9\n\x0cUserResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0c\n\x04role\x18\x03 \x01(\t2?\n\x10\x45mployeesService\x12+\n\nCreateUser\x12\x0c.UserRequest\x1a\r.UserResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1a\x63ompany_to_employees.proto\"Z\n\x10SuperUserRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\x12\x17\n\x0frepeat_password\x18\x05 \x01(\t\"c\n\x0bUserRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0c\n\x04role\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\x12\x17\n\x0frepeat_password\x18\x05 \x01(\t\"9\n\x0cUserResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0c\n\x04role\x18\x03 \x01(\t2v\n\x10\x45mployeesService\x12+\n\nCreateUser\x12\x0c.UserRequest\x1a\r.UserResponse\"\x00\x12\x35\n\x0f\x43reateSuperUser\x12\x11.SuperUserRequest\x1a\r.UserResponse\"\x00\x62\x06proto3')
 
 
 
+_SUPERUSERREQUEST = DESCRIPTOR.message_types_by_name['SuperUserRequest']
 _USERREQUEST = DESCRIPTOR.message_types_by_name['UserRequest']
 _USERRESPONSE = DESCRIPTOR.message_types_by_name['UserResponse']
+SuperUserRequest = _reflection.GeneratedProtocolMessageType('SuperUserRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SUPERUSERREQUEST,
+  '__module__' : 'company_to_employees_pb2'
+  # @@protoc_insertion_point(class_scope:SuperUserRequest)
+  })
+_sym_db.RegisterMessage(SuperUserRequest)
+
 UserRequest = _reflection.GeneratedProtocolMessageType('UserRequest', (_message.Message,), {
   'DESCRIPTOR' : _USERREQUEST,
   '__module__' : 'company_to_employees_pb2'
@@ -38,10 +46,12 @@ _EMPLOYEESSERVICE = DESCRIPTOR.services_by_name['EmployeesService']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _USERREQUEST._serialized_start=30
-  _USERREQUEST._serialized_end=129
-  _USERRESPONSE._serialized_start=131
-  _USERRESPONSE._serialized_end=188
-  _EMPLOYEESSERVICE._serialized_start=190
-  _EMPLOYEESSERVICE._serialized_end=253
+  _SUPERUSERREQUEST._serialized_start=30
+  _SUPERUSERREQUEST._serialized_end=120
+  _USERREQUEST._serialized_start=122
+  _USERREQUEST._serialized_end=221
+  _USERRESPONSE._serialized_start=223
+  _USERRESPONSE._serialized_end=280
+  _EMPLOYEESSERVICE._serialized_start=282
+  _EMPLOYEESSERVICE._serialized_end=400
 # @@protoc_insertion_point(module_scope)

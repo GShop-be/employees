@@ -12,7 +12,7 @@ __all__ = [
 
 Settings = ConfigurationSet(
     config_from_yaml(
-        str(Path('configs', 'account-service-config.yaml')),
+        str(Path('configs', 'db-config.yaml')),
         read_from_file=True
     ),
     config_from_python(service_config, separator='__')

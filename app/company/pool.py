@@ -1,3 +1,4 @@
+import asyncio
 from typing import Callable
 
 from settings import Settings
@@ -36,10 +37,13 @@ class CompanyPool:
 
         initializer = self._initializer_factory(async_session_maker)
 
-        await initializer.initialize()
+        init_coro = asyncio.create_task(initializer.initialize())
 
-        company = Company(async_session_maker)
+        done, _ = await asyncio.wait({init_coro})
 
-        self._cached[id_] = company
+        if init_coro in done:
+            company = Company(async_session_maker)
 
-        return company
+            self._cached[id_] = company
+
+            return company

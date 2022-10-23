@@ -12,14 +12,18 @@ class Application:
     def __init__(self):
         self.core = Core()
 
-        self.company_pool = CompanyPool(
+        self._company_pool = CompanyPool(
             self.core.async_session_maker_factory,
             self.core.initializer_factory
         )
 
-        self.entrypoints = Entrypoints()
+        self.entrypoints = Entrypoints(self._company_pool)
 
     async def start(self):
-        company = await self.company_pool.get('dev')
+        self.core.initialize()
 
         await self.entrypoints.start()
+
+    async def stop(self):
+        await self.entrypoints.stop()
+

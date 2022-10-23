@@ -4,6 +4,9 @@ from db_entities.initilaizer import Initializer
 from db_entities.session_maker import SessionMaker
 
 from settings import Settings
+
+from .secret_keys import SecretKeys
+
 from ..company import Base
 
 
@@ -22,7 +25,7 @@ class Core:
             host=Settings.db.company.host,
             port=Settings.db.company.port,
             is_async=True,
-            echo=True,
+            echo=False,
         )
 
         self.initializer_factory = partial(
@@ -30,3 +33,8 @@ class Core:
             metadata=Base.metadata,
             alembic_config_path=Settings.ALEMBIC_CONFIG_PATH,
         )
+
+        self.secret_keys = SecretKeys()
+
+    def initialize(self):
+        self.secret_keys.load_keys()
